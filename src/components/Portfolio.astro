@@ -1,0 +1,42 @@
+---
+import { site } from "../data/site";
+import Photo from "./Photo.astro";
+import Sunburst from "./Sunburst.astro";
+---
+
+<section class="section section--sand" id="portfolio" aria-labelledby="portfolio-title" data-reveal>
+  <div class="container">
+    <header class="section__head">
+      <p class="kicker">
+        <Sunburst />
+        {site.portfolioIntro.kicker}
+      </p>
+      <h2 id="portfolio-title">{site.portfolioIntro.title}</h2>
+      <p class="dek">{site.portfolioIntro.lead}</p>
+    </header>
+
+    <div class="works">
+      {
+        site.portfolio.map((item) => (
+          <article class:list={["work", item.featured && "work--feature", item.image?.provisional && "work--slim"]}>
+            <div class="work__frame">
+              <Photo photo={item.image} variant={item.art} framed />
+              {item.detail && (
+                <div class="work__sticker">
+                  <Photo photo={item.detail} variant={item.art} />
+                </div>
+              )}
+              <p class:list={["badge", item.image ? "badge--check" : "badge--todo"]}>{item.badge}</p>
+            </div>
+            <div class="work__body">
+              <p class="work__cat">{item.category}</p>
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+              <p class="todo-note">{item.note}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

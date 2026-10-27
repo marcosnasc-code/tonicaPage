@@ -1,0 +1,31 @@
+---
+import { site } from "../data/site";
+import Sunburst from "./Sunburst.astro";
+---
+
+<section class="section" id="como-funciona" aria-labelledby="processo-title" data-reveal>
+  <div class="container">
+    <div class="island">
+    <header class="section__head">
+      <p class="kicker">
+        <Sunburst />
+        {site.processIntro.kicker}
+      </p>
+      <h2 id="processo-title">{site.processIntro.title}</h2>
+      <p class="dek">{site.processIntro.lead}</p>
+    </header>
+
+    <ol class="steps">
+      {
+        site.process.map((step) => (
+          <li class="step">
+            <p class="step__index">{step.index}</p>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+import { site } from "../data/site";
+import Sunburst from "./Sunburst.astro";
+---
+
+<section class="section section--tight" id="duvidas" aria-labelledby="faq-title">
+  <div class="container faq-wrap">
+    <header class="section__head">
+      <p class="kicker">
+        <Sunburst />
+        {site.faqIntro.kicker}
+      </p>
+      <h2 id="faq-title">{site.faqIntro.title}</h2>
+    </header>
+
+    <div class="faq">
+      {
+        site.faq.map((item) => (
+          <details>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

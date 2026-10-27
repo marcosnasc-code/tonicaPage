@@ -1,0 +1,17 @@
+---
+interface Props {
+  from: string;
+  to: string;
+}
+
+const { from, to } = Astro.props;
+---
+
+<div class="wave" style={`background:${from}`} aria-hidden="true">
+  <svg viewBox="0 0 1440 88" preserveAspectRatio="none" focusable="false">
+    <path
+      fill={to}
+      d="M0,46 C140,86 260,8 460,36 C680,68 820,4 1040,40 C1220,68 1340,22 1440,48 L1440,88 L0,88 Z"
+    ></path>
+  </svg>
+</div>

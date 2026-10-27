@@ -1,0 +1,44 @@
+---
+import { site } from "../data/site";
+import Photo from "./Photo.astro";
+import Sunburst from "./Sunburst.astro";
+---
+
+<section class="section" id="novidades" aria-labelledby="novidades-title" data-reveal>
+  <div class="container">
+    <header class="section__head">
+      <p class="kicker">
+        <Sunburst />
+        {site.newsIntro.kicker}
+      </p>
+      <h2 id="novidades-title">{site.newsIntro.title}</h2>
+      <p class="dek">{site.newsIntro.lead}</p>
+    </header>
+
+    <div class="news-list">
+      {
+        site.news.map((item) => (
+          <article class="news">
+            <div class="news__frame">
+              <Photo photo={item.image} variant={item.art} />
+              <p class:list={["badge", item.image ? "badge--check" : "badge--todo"]}>{item.badge}</p>
+            </div>
+            <div class="news__body">
+              <p class="news__date">{item.date}</p>
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+              <p class="todo-note">{item.note}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="news-more">
+      <a href={site.social.instagram} target="_blank" rel="noopener noreferrer">
+        Ver {site.social.instagramHandle} no Instagram
+        <span class="sr-only"> (abre em nova aba)</span>
+      </a>
+    </p>
+  </div>
+</section>

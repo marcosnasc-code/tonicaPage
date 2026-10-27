@@ -1,0 +1,38 @@
+---
+import { site } from "../data/site";
+import Sunburst from "./Sunburst.astro";
+---
+
+<section class="section" id="menus" aria-labelledby="menus-title" data-reveal>
+  <div class="container">
+    <header class="section__head">
+      <p class="kicker">
+        <Sunburst />
+        {site.menusIntro.kicker}
+      </p>
+      <h2 id="menus-title">{site.menusIntro.title}</h2>
+      <p class="dek">{site.menusIntro.lead}</p>
+    </header>
+
+    <ol class="menu-list">
+      {
+        site.menus.map((menu) => (
+          <li class="menu" id={menu.id}>
+            <p class="menu__index">
+              <span>{menu.index}</span>
+            </p>
+            <div class="menu__copy">
+              <h3>{menu.title}</h3>
+              <p>{menu.summary}</p>
+            </div>
+            <ul class="menu__includes">
+              {menu.includes.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

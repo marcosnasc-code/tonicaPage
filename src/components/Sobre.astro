@@ -1,0 +1,72 @@
+---
+import { site } from "../data/site";
+import Photo from "./Photo.astro";
+import Sunburst from "./Sunburst.astro";
+---
+
+<section class="section section--ink" id="sobre" aria-labelledby="sobre-title" data-reveal>
+  <div class="container sobre">
+    <div class="sobre__copy">
+      <p class="kicker kicker--light">
+        <Sunburst />
+        {site.about.kicker}
+      </p>
+      <h2 id="sobre-title">{site.about.title}</h2>
+      {site.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      <p class="pull">
+        {site.about.pull}
+        <em>{site.about.pullAccent}</em>
+      </p>
+    </div>
+
+    <div class="sobre__gallery">
+      <figure class="portrait">
+        <Photo photo={site.about.portrait} framed />
+        <figcaption>
+          <span class="portrait__name">{site.founder}</span>
+          <span>fundadora</span>
+        </figcaption>
+      </figure>
+      <figure class="services-card">
+        <Photo photo={site.about.services} framed />
+      </figure>
+    </div>
+
+    <div class="sobre__team">
+      <h3>{site.teamIntro.title}</h3>
+      <p class="todo-note todo-note--light">{site.teamIntro.note}</p>
+      <ul class="team">
+        {
+          site.team.map((person) => (
+            <li class="member">
+              <span class="member__photo">
+                {person.image ? (
+                  <img
+                    src={person.image.src}
+                    width={person.image.width}
+                    height={person.image.height}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <>
+                    <Sunburst />
+                    <span>foto</span>
+                  </>
+                )}
+              </span>
+              <span class="member__name">{person.name}</span>
+              <span class="member__role">{person.role}</span>
+              {person.note && <span class="member__flag">{person.note}</span>}
+            </li>
+          ))
+        }
+      </ul>
+      <figure class="team-snap">
+        <Photo photo={site.about.teamSnap} />
+        <figcaption>{site.about.teamSnapNote}</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+import { site } from "../data/site";
+import Logo from "./Logo.astro";
+---
+
+<header class="site-header">
+  <div class="container header__bar">
+    <Logo />
+    <nav class="site-nav" aria-label="Seções">
+      <ul>
+        {
+          site.nav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <a class="btn btn--small header__cta" href={site.cta.href} target="_blank" rel="noopener noreferrer">
+      <span class="header__cta-full">{site.cta.label}</span>
+      <span class="header__cta-short">{site.cta.short}</span>
+      <span class="sr-only"> (abre em nova aba)</span>
+    </a>
+  </div>
+</header>

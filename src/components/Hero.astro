@@ -1,0 +1,101 @@
+---
+import { site } from "../data/site";
+import Photo from "./Photo.astro";
+import Sunburst from "./Sunburst.astro";
+
+const loop = [...site.marquee, ...site.marquee];
+---
+
+<section class="hero" id="inicio">
+  <div class="blob blob--mustard" aria-hidden="true"></div>
+  <div class="blob blob--teal" aria-hidden="true"></div>
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="kicker">
+        <Sunburst />
+        {site.hero.eyebrow}
+      </p>
+      <h1>
+        <span class="line">{site.hero.title[0]}</span>
+        <span class="line"><span class="mark">{site.hero.title[1]}</span></span>
+        <span class="line">{site.hero.title[2]}</span>
+      </h1>
+      <p class="hero__accent">{site.hero.accent}</p>
+      <p class="lead">{site.hero.lead}</p>
+      <div class="hero__actions">
+        <a class="btn" href={site.cta.href} target="_blank" rel="noopener noreferrer">
+          {site.cta.label}
+          <span class="sr-only"> (abre em nova aba)</span>
+        </a>
+        <a class="btn btn--ghost" href={site.hero.secondaryHref}>{site.hero.secondary}</a>
+      </div>
+      <p class="hero__where">
+        <Sunburst />
+        {site.hero.location}
+      </p>
+    </div>
+
+    <div class="hero__visual">
+      <svg class="orbit" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <defs>
+          <path id="orbitPath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"></path>
+        </defs>
+        <text class="orbit__text">
+          <textPath href="#orbitPath">
+            estéticas obcecadas ✷ narrativa tônica ✷ santa catarina ✷
+          </textPath>
+        </text>
+      </svg>
+      <figure class="hero__photo">
+        <Photo photo={site.hero.photo} eager framed />
+      </figure>
+    </div>
+
+    <aside class="hero__card" aria-label="Atalho para os menus">
+      <p class="hero__card-kicker">
+        <Sunburst />
+        {site.hero.cardKicker}
+      </p>
+      <ol>
+        {
+          site.menus.map((menu) => (
+            <li>
+              <a href={`#${menu.id}`}>
+                <span>{menu.index}</span>
+                {menu.short}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="hero__card-foot">{site.hero.cardFoot}</p>
+    </aside>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      {
+        loop.map((item) => (
+          <span>
+            {item} <span class="marquee__star">✷</span>
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</div>
+<div class="marquee-wrap marquee-wrap--flip">
+  <div class="marquee marquee--teal" aria-hidden="true">
+    <div class="marquee__track marquee__track--back">
+      {
+        loop.map((item) => (
+          <span>
+            {item} <span class="marquee__star">✷</span>
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</div>
