@@ -1,0 +1,39 @@
+---
+import ArtFrame from "./ArtFrame.astro";
+import type { ArtVariant, Photo } from "../data/site";
+
+interface Props {
+  photo: Photo | null;
+  variant?: ArtVariant;
+  eager?: boolean;
+  framed?: boolean;
+}
+
+const { photo, variant = "brand", eager = false, framed = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    "shot",
+    photo?.provisional && "shot--provisional",
+    !photo && "shot--art",
+    framed && photo && !photo.provisional && "shot--fill",
+  ]}
+>
+  {
+    photo ? (
+      <img
+        src={photo.src}
+        width={photo.width}
+        height={photo.height}
+        alt={photo.alt}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        fetchpriority={eager ? "high" : undefined}
+      />
+    ) : (
+      <ArtFrame variant={variant} />
+    )
+  }
+  {photo?.provisional && <p class="shot__flag">provisória · baixa resolução</p>}
+</div>

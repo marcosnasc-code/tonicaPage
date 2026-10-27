@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+import Contato from "../components/Contato.astro";
+import Faq from "../components/Faq.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Menus from "../components/Menus.astro";
+import Novidades from "../components/Novidades.astro";
+import Portfolio from "../components/Portfolio.astro";
+import Processo from "../components/Processo.astro";
+import Sobre from "../components/Sobre.astro";
+import Wave from "../components/Wave.astro";
+---
+
+<Base>
+  <Header />
+  <main id="conteudo">
+    <Hero />
+    <Menus />
+    <Wave from="#fff6e3" to="#f3e6cc" />
+    <Portfolio />
+    <Wave from="#f3e6cc" to="#fff6e3" />
+    <Processo />
+    <Wave from="#fff6e3" to="#5a1e14" />
+    <Sobre />
+    <Wave from="#5a1e14" to="#fff6e3" />
+    <Novidades />
+    <Faq />
+    <Contato />
+  </main>
+  <Footer />
+</Base>

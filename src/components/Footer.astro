@@ -1,0 +1,44 @@
+---
+import { site } from "../data/site";
+import Logo from "./Logo.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <Logo />
+      <p>{site.category}</p>
+      <p>{site.location}</p>
+    </div>
+
+    <nav aria-label="Rodapé">
+      <ul>
+        {
+          site.nav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="footer__contact">
+      <a href={site.cta.href} target="_blank" rel="noopener noreferrer">
+        {site.cta.label}
+        <span class="sr-only"> (abre em nova aba)</span>
+      </a>
+      <a href={site.social.instagram} target="_blank" rel="noopener noreferrer">
+        Instagram {site.social.instagramHandle}
+        <span class="sr-only"> (abre em nova aba)</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="container footer__legal">
+    <p>© {year} {site.name}. Todos os direitos reservados.</p>
+    <p>{site.footer.note}</p>
+  </div>
+</footer>

@@ -1,0 +1,26 @@
+---
+/**
+ * TODO: substituir este logotipo em CSS pelo vetor oficial
+ * (círculo mostarda, "TÔN / ICA" e "produtora") quando o arquivo chegar.
+ * Não há SVG/PDF da marca no repositório.
+ */
+interface Props {
+  /** Em faixas estreitas o nome ao lado pode ser omitido visualmente. */
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<a class:list={["logo", compact && "logo--compact"]} href="#inicio">
+  <span class="logo__mark" aria-hidden="true">
+    <span class="logo__ton">TÔN</span>
+    <span class="logo__rule"></span>
+    <span class="logo__ica">ICA</span>
+    <span class="logo__sub">produtora</span>
+  </span>
+  <span class="logo__word">
+    <span class="logo__name">tônica</span>
+    <span class="logo__tag">produtora</span>
+  </span>
+</a>

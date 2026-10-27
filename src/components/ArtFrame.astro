@@ -1,0 +1,73 @@
+---
+interface Props {
+  variant: "wellness" | "feed" | "film" | "print" | "brand" | "note";
+}
+
+const { variant } = Astro.props;
+---
+
+<div class:list={["art", `art--${variant}`]} aria-hidden="true">
+  {
+    variant === "wellness" && (
+      <>
+        <span class="orb orb--blush"></span>
+        <span class="orb orb--teal"></span>
+        <span class="orb orb--ring"></span>
+        <span class="art__script">plena</span>
+        <span class="art__fine">wellness</span>
+      </>
+    )
+  }
+  {
+    variant === "feed" && (
+      <>
+        <span class="tiles">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="art__script art__script--ink">feed</span>
+      </>
+    )
+  }
+  {
+    variant === "film" && (
+      <>
+        <span class="sprocket sprocket--left"></span>
+        <span class="sprocket sprocket--right"></span>
+        <span class="play"></span>
+        <span class="art__script art__script--light">take</span>
+      </>
+    )
+  }
+  {
+    variant === "print" && (
+      <>
+        <span class="stub"></span>
+        <span class="art__script">brinde</span>
+        <span class="art__fine">peça offline</span>
+      </>
+    )
+  }
+  {
+    variant === "brand" && (
+      <>
+        <span class="echo"></span>
+        <span class="echo-sq"></span>
+        <span class="art__script art__script--ink">marca</span>
+      </>
+    )
+  }
+  {
+    variant === "note" && (
+      <>
+        <span class="orb orb--blush"></span>
+        <span class="art__script art__script--ink">em breve</span>
+        <span class="art__fine">novidade</span>
+      </>
+    )
+  }
+</div>

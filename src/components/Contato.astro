@@ -1,0 +1,52 @@
+---
+import { site } from "../data/site";
+import Sunburst from "./Sunburst.astro";
+---
+
+<section class="section" id="contato" aria-labelledby="contato-title">
+  <div class="container">
+    <div class="ticket">
+      <div class="ticket__main">
+        <p class="kicker">
+          <Sunburst />
+          {site.contactIntro.kicker}
+        </p>
+        <h2 id="contato-title">{site.contactIntro.title}</h2>
+        <p class="lead">{site.contactIntro.lead}</p>
+        <a class="btn" href={site.cta.href} target="_blank" rel="noopener noreferrer">
+          {site.cta.label}
+          <span aria-hidden="true">↗</span>
+          <span class="sr-only"> (abre em nova aba)</span>
+        </a>
+      </div>
+
+      <address class="ticket__side">
+        <p class="ticket__label">outros caminhos</p>
+        <ul>
+          <li>
+            <span>WhatsApp</span>
+            <a href={site.contacts.whatsappHref} aria-describedby="whatsapp-note">
+              {site.contacts.whatsappDisplay}
+            </a>
+            <small id="whatsapp-note">{site.contacts.whatsappNote}</small>
+          </li>
+          <li>
+            <span>E-mail</span>
+            <a href={`mailto:${site.contacts.email}`} aria-describedby="email-note">
+              {site.contacts.email}
+            </a>
+            <small id="email-note">{site.contacts.emailNote}</small>
+          </li>
+          <li>
+            <span>Instagram</span>
+            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer">
+              {site.social.instagramHandle}
+              <span class="sr-only"> (abre em nova aba)</span>
+            </a>
+            <small>Perfil público da produtora.</small>
+          </li>
+        </ul>
+      </address>
+    </div>
+  </div>
+</section>

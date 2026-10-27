@@ -1,0 +1,4 @@
+# A meta robots da página (src/data/site.ts → seo.robots) é quem
+# segura a indexação enquanto contatos e domínio forem provisórios.
+User-agent: *
+Allow: /
